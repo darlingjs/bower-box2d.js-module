@@ -1,0 +1,23 @@
+{
+  "name": "darlingjs-box2d.js",
+  "version": "0.7.0",
+  "main": [
+    "./box2dEmscriptenAdapter.js"
+  ],
+  "description": "darlingjs module - adapter for box2d.js (emscripten)",
+  "keywords": [
+    "physic",
+    "box2d",
+    "darlingjs"
+  ],
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:darlingjs/bower-box2d.js-module.git"
+  }
+}
