@@ -85,6 +85,10 @@
                     break;
             }
 
+            if (ngPhysic.allowSleep === false) {
+                bodyDef.set_allowSleep(false);
+            }
+
             var rotation = 0.0;
             var shape;
             var fixDef = poolOfFixtureDef.get();
@@ -153,6 +157,7 @@
                 bodyDef.set_position(vec);
                 bodyDef.set_angle(rotation);
                 bodyDef.set_fixedRotation(ngPhysic.fixedRotation);
+                bodyDef.set_linearDamping(ngPhysic.linearDamping);
                 bodyDef.set_angularDamping(ngPhysic.angularDamping);
                 body = this._world.CreateBody(bodyDef);
                 vec.onDispose();
@@ -1710,6 +1715,25 @@
             var vec = getb2Vec2(dx, dy);
             body.SetLinearVelocity(vec);
             vec.onDispose();
+        }]
+    });
+
+    m.$s('ngBox2DApplyImpulse', {
+        $require: ['ngApplyImpulse', 'ngPhysic'],
+
+        $update: ['$entity', function($entity) {
+            var body = $entity.ngPhysic._b2dBody;
+            var ngApplyImpulse = $entity.ngApplyImpulse;
+            if (body) {
+                var vec = getb2Vec2(ngApplyImpulse.x, ngApplyImpulse.y);
+                body.ApplyLinearImpulse(vec, body.GetWorldCenter());
+                vec.onDispose();
+
+                if (ngApplyImpulse.autoRemove) {
+                    $entity.$remove('ngApplyImpulse');
+                }
+            }
+
         }]
     });
 

@@ -2,7 +2,10 @@
   "name": "darlingjs-box2d.js",
   "version": "0.7.0",
   "main": [
-    "./box2dEmscriptenAdapter.js"
+    "./box2dEmscriptenAdapter.js",
+    "./box2d.js",
+    "./box2d-dev.js",
+    "./embox2d-html5canvas-debugDraw.js"
   ],
   "description": "darlingjs module - adapter for box2d.js (emscripten)",
   "keywords": [
